@@ -53,24 +53,33 @@ The full methodology write-up lives in [`readme.txt`](readme.txt).
 
 ## Install
 
+Install as a package (gives you the `indices-mc` command and `import indices_mc`
+from anywhere):
+
 ```bash
-pip install -r requirements.txt
+pip install -e .            # core: numpy, matplotlib, yfinance
+pip install -e ".[all]"     # plus the Streamlit app, notebook, and test deps
 ```
+
+Optional extras can be installed individually: `.[app]`, `.[notebook]`, `.[dev]`.
 
 ## Three frontends
 
 ### Command line
 
+After installing, use the `indices-mc` command (or the equivalent
+`python -m indices_mc.cli` if you prefer not to install):
+
 ```bash
 # Pick a national index by preset key:
-python -m indices_mc.cli --index sp500 --lookback 10 --horizon 10 \
+indices-mc --index sp500 --lookback 10 --horizon 10 \
     --target 9000 --iterations 20000 --save run
 
 # List every available national-index preset:
-python -m indices_mc.cli --list-indices
+indices-mc --list-indices
 
 # Or use any other yfinance symbol directly:
-python -m indices_mc.cli --ticker ^OMXC25 --target 3000
+indices-mc --ticker ^OMXC25 --target 3000
 ```
 
 Add `--show` to display plots, or `--drift-low/--drift-high` to treat drift as a

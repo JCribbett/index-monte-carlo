@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "indices-mc"
+description = "Monte Carlo simulator for major national stock indices under geometric Brownian motion (educational)."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Jeffrey Cribbett", email = "JeffreyCribbett@outlook.com" }]
+keywords = ["monte-carlo", "finance", "simulation", "gbm", "stock-index", "education"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Education",
+    "Intended Audience :: Financial and Insurance Industry",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Office/Business :: Financial :: Investment",
+    "Topic :: Scientific/Engineering :: Mathematics",
+]
+dynamic = ["version"]
+dependencies = [
+    "numpy>=1.24",
+    "matplotlib>=3.7",
+    "yfinance>=0.2.40",
+]
+
+[project.optional-dependencies]
+app = ["streamlit>=1.30"]
+notebook = ["jupyter>=1.0"]
+dev = ["pytest>=7.0"]
+all = ["streamlit>=1.30", "jupyter>=1.0", "pytest>=7.0"]
+
+[project.urls]
+Homepage = "https://github.com/JCribbett/index-monte-carlo"
+Repository = "https://github.com/JCribbett/index-monte-carlo"
+
+[project.scripts]
+indices-mc = "indices_mc.cli:main"
+
+[tool.setuptools]
+packages = ["indices_mc"]
+
+[tool.setuptools.dynamic]
+version = { attr = "indices_mc.__version__" }
