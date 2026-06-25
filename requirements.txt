@@ -1,7 +1,4 @@
-numpy>=1.24
-matplotlib>=3.7
-yfinance>=0.2.40
-streamlit>=1.30
-# Dev / notebook extras:
-pytest>=7.0
-jupyter>=1.0
+# Dependencies are declared in pyproject.toml (single source of truth).
+# This file installs the package with all extras for convenience:
+#   pip install -r requirements.txt
+-e .[all]
